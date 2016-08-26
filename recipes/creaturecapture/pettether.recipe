@@ -1,0 +1,13 @@
+{
+  "input" : [
+    { "item" : "durasteelbar", "count" : 1 },
+    { "item" : "alienmeat", "count" : 1 },
+    { "item" : "leather", "count" : 2 },
+    { "item" : "climbingrope", "count" : 2 }
+  ],
+  "output" : {
+    "item" : "pettether",
+    "count" : 1
+  },
+  "groups" : [ "capturestation", "all" ]
+}

@@ -1,0 +1,29 @@
+[
+{
+  "op": "replace",
+  "path": "/leveledStatusEffects/0",
+  "value": {
+      "levelFunction" : "standardArmorLevelPowerMultiplierMultiplier",
+      "stat" : "powerMultiplier",
+      "baseMultiplier" : 2.1
+}
+},
+{
+  "op": "replace",
+  "path": "/leveledStatusEffects/2",
+  "value":     {
+      "levelFunction" : "standardArmorLevelMaxEnergyMultiplier",
+      "stat" : "maxEnergy",
+      "amount" : 5
+    }
+},
+{
+  "op": "replace",
+  "path": "/leveledStatusEffects/3",
+  "value":     {
+      "levelFunction" : "standardArmorLevelMaxHealthMultiplier",
+      "stat" : "maxHealth",
+      "amount" : 4
+    }
+}
+]

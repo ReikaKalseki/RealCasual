@@ -1,0 +1,13 @@
+{
+  "input" : [
+    { "item" : "silverbar", "count" : 2 },
+    { "item" : "goldbar", "count" : 1 },
+    { "item" : "ironbar", "count" : 1 },
+    { "item" : "diamond", "count" : 1 }
+  ],
+  "output" : {
+    "item" : "capturepod",
+    "count" : 2
+  },
+  "groups" : [ "capturestation", "all" ]
+}

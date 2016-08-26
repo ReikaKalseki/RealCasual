@@ -1,0 +1,120 @@
+function init()
+	toggleOptions = false
+
+	-- show buttons only for supported containers
+	local scripts = world.getObjectParameter(pane.containerEntityId(), "scripts")
+	if scripts then
+		for k, v in pairs(scripts) do
+			if v == "/scripts/enhancedstorage.lua" then
+				widget.setVisible("sortContainer", true)
+				widget.setVisible("optionsButton", true)	
+			end
+		end
+	end
+
+	-- select radio buttons for uiConfig
+	local uiConfig = world.getObjectParameter(pane.containerEntityId(), "uiConfig")
+	if uiConfig == "/interface/chests/chest<slots>red.config" then
+		widget.setSelectedOption("interfaceColors", 1)
+	elseif uiConfig == "/interface/chests/chest<slots>blue.config" then
+		widget.setSelectedOption("interfaceColors", 0)
+	else
+		widget.setSelectedOption("interfaceColors", -1)
+	end
+	world.sendEntityMessage(pane.containerEntityId(), "interfaceColors", uiConfig)
+
+	-- select checkbox for keepContent
+	local keepContent = world.getObjectParameter(pane.containerEntityId(), "keepContent")
+	if keepContent == true or keepContent == nil then
+		widget.setChecked("keepContent", true)
+		keepContent = true
+	else
+		widget.setChecked("keepContent", false)	
+		keepContent = false
+	end
+	world.sendEntityMessage(pane.containerEntityId(), "keepContent", keepContent)
+end
+
+function optionsButton()
+	-- show options menu
+	toggleOptions = not toggleOptions
+	widget.setVisible("optionsBackground", toggleOptions)
+	widget.setVisible("optionsLabel", toggleOptions)
+	widget.setVisible("optionsSave", toggleOptions)
+	widget.setVisible("optionsReset", toggleOptions)
+	widget.setVisible("itemGrid", not toggleOptions)
+	widget.setVisible("clear", not toggleOptions)
+	widget.setVisible("count", not toggleOptions)
+
+	widget.setVisible("optionsOption1Label", toggleOptions)
+	widget.setVisible("renameContainer", toggleOptions)
+	widget.setVisible("renameContainerEnter", toggleOptions)
+	widget.setVisible("renameContainerReset", toggleOptions)
+	widget.setVisible("renameContainerImage", toggleOptions)
+
+	widget.setVisible("optionsOption2Label", toggleOptions)
+	widget.setVisible("interfaceColors", toggleOptions)
+
+	widget.setVisible("optionsOption3Label", toggleOptions)
+	widget.setVisible("keepContent", toggleOptions)
+end
+
+function optionsSave(reset)
+	local newName = widget.getText("renameContainer")
+	if newName == "reset" then
+		world.sendEntityMessage(pane.containerEntityId(), "renameContainer", "")
+	elseif newName ~= "" then
+		world.sendEntityMessage(pane.containerEntityId(), "renameContainer", newName)
+	end
+
+	local interfaceColors = widget.getSelectedOption("interfaceColors")
+	local uiConfig = ""
+	if interfaceColors == 1 then
+		uiConfig = "/interface/chests/chest<slots>red.config"
+	elseif interfaceColors == 0 then
+		uiConfig = "/interface/chests/chest<slots>blue.config"
+	else
+		uiConfig = "/interface/chests/chest<slots>.config"
+	end
+	world.sendEntityMessage(pane.containerEntityId(), "interfaceColors", uiConfig)
+
+	local keepContent = widget.getChecked("keepContent")
+	world.sendEntityMessage(pane.containerEntityId(), "keepContent", keepContent)
+
+	if reset == "reset" then
+		world.sendEntityMessage(pane.containerEntityId(), "resetOptions", resetOptions)
+	else
+		world.sendEntityMessage(pane.containerEntityId(), "saveOptions", saveOptions)
+	end
+	
+	widget.playSound("/sfx/objects/containerRename.ogg")
+	pane.dismiss()
+end
+
+function optionsReset()
+	widget.setText("renameContainer", "reset")
+	widget.setChecked("keepContent", true)
+	widget.setSelectedOption("interfaceColors", -1)
+	
+	optionsSave("reset")
+	pane.dismiss()
+end
+
+function renameContainer()
+	widget.blur("renameContainer")
+end
+
+function renameContainerAbort()
+	widget.setText("renameContainer", "")
+	widget.blur("renameContainer")
+end
+
+function sortContainer()
+	world.sendEntityMessage(pane.containerEntityId(), "sortContainer")
+end
+
+function interfaceColors()
+end
+
+function keepContent()
+end
