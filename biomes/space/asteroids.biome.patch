@@ -1,0 +1,10 @@
+[
+  {
+    "op": "remove",
+    "path": "/spawnProfile/groups/0"
+  },
+  {
+    "op": "remove",
+    "path": "/statusEffects/0"
+  }
+]

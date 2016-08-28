@@ -1,10 +1,10 @@
 {
   "author" : "Reika",
-  "description" : "Because not everyone forgets games are supposed to be fun, and for some people that means easy. The phrase 'Git Gud' is only used by morons or people who value their self-worth based on their ability to sit in front of a computer for six hours, aka morons. Hate the mod? Sure? Are you being forced to use it? No? Then why are you complaining?",
+  "description" : "Because not everyone forgets games are supposed to be fun, and for some people that means easy. The phrase 'Git Gud' is only used by morons or people who value their self-worth based on their ability to sit in front of a computer for six hours, aka morons. Hate the mod? Sure? Are you being forced to use it? No? Then why are you complaining?\n\nCurrent change list:\n-Increases shipping container storage capacity to 1000 slots\n-Buffs armor player DPS 35%\n-Doubles protection and energy value from armor\n-Makes certain recipes cheaper, including capture pods, several wiring items, and pet tethers\n-Doubles smelted ore pixel refinery output\n-Increases high-tier ore (Aegisalt, Ferozium, Violium, Solarium) pixel refinery output 50% (on top of the above)\n-Removes skimbus spawns from asteroid fields",
   "friendlyName" : "RealCasual",
   "includes" : ["Avali", "Enhanced Storage", "Iron Asteroids", "Universal Mach"],
   "link" : "steam://url/CommunityFilePage/751145979",
   "name" : "RealCasual",
   "steamContentId" : "751145979",
-  "version" : "0.0.1"
+  "version" : "0.0.2"
 }
